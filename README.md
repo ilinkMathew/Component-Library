@@ -7,7 +7,7 @@ Create customizable angular components
 Components 
 1. Item list Table 
 
-Mock Design for the Component can be found here
+Mock Design for the Component 
 ![ItemList Table](https://github.com/ilinkMathew/Component-Library/blob/master/designs/ItemList.png)
 
 
