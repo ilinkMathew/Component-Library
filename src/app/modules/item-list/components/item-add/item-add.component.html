@@ -1,0 +1,21 @@
+  <div class="AddItem"> 
+  <form class="AddItemForm">
+  <mat-form-field>
+    <mat-select placeholder="Select Category">
+      <mat-option *ngFor="let item of ['Category A','Category B','Category C']" [value]="item">{{item}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Product Name">
+  </mat-form-field>
+    <mat-form-field>
+    <input matInput placeholder="Product Price">
+  </mat-form-field>
+  <button mat-icon-button>
+    <mat-icon svgIcon="add"></mat-icon>
+  </button>
+  <button mat-icon-button>
+  <mat-icon svgIcon="clear"></mat-icon>
+  </button>
+ </form> 
+ </div>

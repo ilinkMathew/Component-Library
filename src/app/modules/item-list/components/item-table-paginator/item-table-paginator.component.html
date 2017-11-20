@@ -1,0 +1,19 @@
+<div class="ItemTablePaginator">
+    <div class="ItemLimiter">
+        
+        <label>Items Per Page</label>
+        <mat-form-field>
+        <mat-select [value]="selectedLimiterValue" (change)="limitChange($event.value)" >
+            <mat-option *ngFor="let limit of [5,10,15]" [value]="limit">
+                        {{ limit }}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>      
+    </div>
+    <div class="ItemPaginator">
+        <button mat-icon-button [disabled]="startValue<=1" (click)="goToPrev()"><mat-icon class="PaginateButton" svgIcon="prev" ></mat-icon></button>
+        <p>{{startValue}} - {{endValue}} of {{tableSize}}</p>
+        <button mat-icon-button [disabled]="endValue >=tableSize" (click)="goToNext()" ><mat-icon class="PaginateButton" svgIcon="next"></mat-icon></button>
+    </div>
+</div>
+ 

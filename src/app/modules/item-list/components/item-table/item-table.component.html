@@ -1,0 +1,44 @@
+<div class="ItemTable">
+            <!-- table headers and data -->
+    <table #itemtable >
+        <tr>
+            <th *ngFor = "let header of tableHeaders">{{header}}</th> 
+            <th></th>
+        </tr>
+        <ng-container  *ngFor="let dataItem of tableData;let i = index ">
+        <tr>
+            <td *ngFor="let key of dataFields">{{dataItem[key]}}</td>
+            <td>   
+                <button mat-icon-button (click)="edit(dataItem,'item'+i)"><mat-icon svgIcon="edit"></mat-icon></button>
+                <button mat-icon-button (click)="delete(dataItem,'item'+i)"><mat-icon svgIcon="delete"></mat-icon></button>
+            </td> 
+         </tr> 
+         
+        <tr [hidden]="true"  class="itemDetail"  id="item{{i}}">
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Product" [value]="dataItem[dataFields[0]]">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Price" [value]="dataItem[dataFields[1]]">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field>
+                    <input matInput placeholder="Category" [value]="dataItem[dataFields[2]]">
+                </mat-form-field>
+            </td>
+            <td >
+                <button mat-icon-button><mat-icon svgIcon="update"></mat-icon></button>
+                <button mat-icon-button (click)="cancel('item'+i)" ><mat-icon svgIcon="cancel"></mat-icon></button>
+            </td>
+        </tr>
+               
+         
+        </ng-container>
+        
+        
+    </table>
+</div>

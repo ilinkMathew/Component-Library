@@ -1,0 +1,33 @@
+.ItemTable > table{
+   	table-layout: fixed;
+    width: 100%;  
+ }
+
+.ItemTable > table > tbody > tr {
+	box-shadow:0px 0px 2px 0px rgba(0, 0, 0, 0.65);
+    height:50px;
+    text-align: center;
+}
+.ItemTable > table > tbody > tr > th {
+	color:#747474;
+    padding:10px;
+}
+.ItemTable > table > tbody > tr > td {
+	color:#A2A2A2;
+ 
+}
+.ItemTable > mat-icon {
+	  height:20px;
+      width:20px;
+      margin-left:20px;
+}
+.ItemTable > table > tbody > .itemDetail {
+  height:130px;
+  box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.65);
+ 
+}
+.itemDetail > td > mat-form-field {
+  width: 80%;
+  font-size: 16px;
+  padding:5%;
+}
