@@ -1,5 +1,8 @@
 <div class="ItemList">
-	<itemListHeader [itemListHeader]="itemListBoxConfg.itemListHeaderTitle"></itemListHeader>
-	<itemAdd></itemAdd>
-	<itemTableContainer [itemListConfig]="itemListBoxConfg"></itemTableContainer>
+    
+		<itemListHeader [itemListHeader]="itemListBoxConfg.itemListHeaderTitle"></itemListHeader>
+	
+	<!-- <itemAdd></itemAdd> -->
+	<itemTableContainer [itemListConfig]="itemListBoxConfg"
+						(onTableContainerChanges) = "handleContainerChanges($event)"></itemTableContainer>
 </div>

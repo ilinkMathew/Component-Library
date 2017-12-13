@@ -1,0 +1,11 @@
+.sort-icon{
+    vertical-align: top;
+    color:#bf9c7b;
+    display: none;
+}
+.down {
+    transform:rotate(180deg);
+}
+.active {
+    display:inline-block;
+}

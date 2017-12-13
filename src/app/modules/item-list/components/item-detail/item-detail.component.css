@@ -1,12 +1,8 @@
-mat-form-field{
-	width: 80%;
-	
-	
+.form-field{
+  text-align: left; 
+  padding:2%;
+  width: 20%;
 }
-mat-icon {
-	width: 20px;
-	height: 20px;
-}
-.actionButtons > button{
-	display: inline;
+mat-icon{
+  color:#bf9c7b;
 }

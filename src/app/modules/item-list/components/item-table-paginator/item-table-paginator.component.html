@@ -11,9 +11,9 @@
         </mat-form-field>      
     </div>
     <div class="ItemPaginator">
-        <button mat-icon-button [disabled]="startValue<=1" (click)="goToPrev()"><mat-icon class="PaginateButton" svgIcon="prev" ></mat-icon></button>
+        <button mat-icon-button color="blue" [disabled]="startValue<=1" (click)="goToPrev()"><mat-icon class="PaginateButton">keyboard_arrow_left</mat-icon></button>
         <p>{{startValue}} - {{endValue}} of {{tableSize}}</p>
-        <button mat-icon-button [disabled]="endValue >=tableSize" (click)="goToNext()" ><mat-icon class="PaginateButton" svgIcon="next"></mat-icon></button>
+        <button mat-icon-button [disabled]="endValue >=tableSize" (click)="goToNext()" ><mat-icon class="PaginateButton">keyboard_arrow_right</mat-icon></button>
     </div>
 </div>
  

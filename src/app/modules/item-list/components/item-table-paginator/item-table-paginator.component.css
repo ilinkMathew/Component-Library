@@ -24,9 +24,8 @@
 .PaginateButton {
 	vertical-align:middle;
     display:inline-block;
-    width:18px;
-    height:18px;
-
+    font-size: 30px;
+    color:#747474;
     
 }
 

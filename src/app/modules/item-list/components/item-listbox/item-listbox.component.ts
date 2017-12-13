@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'itemListBox',
@@ -7,12 +7,16 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class ItemListboxComponent implements OnInit {
   @Input() itemListBoxConfg;
+  @Output() onItemListChanges = new EventEmitter<object>();
   public itemListHeader:any;
   public itemListConfig:any;
   constructor() { }
 
   ngOnInit() {
   
+  }
+  handleContainerChanges(value){
+  	this.onItemListChanges.emit(value);
   }
 
 }

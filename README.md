@@ -15,6 +15,8 @@ Project To do list
 - Editable table rows
 - Implement the sort Feature 
 - Make the components distributable
+- Add animations
+- Improve readme.md
 - Add unit tests
 
 

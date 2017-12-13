@@ -2,38 +2,44 @@
             <!-- table headers and data -->
     <table #itemtable >
         <tr>
-            <th *ngFor = "let header of tableHeaders">{{header}}</th> 
-            <th></th>
+            <th  *ngFor = "let header of tableHeaders;let i=index" >              
+                
+               <tableHeader [headerValue]="header"
+                            [headerId]="dataFields[i]">
+
+               </tableHeader>
+            </th> 
+            
         </tr>
-        <ng-container  *ngFor="let dataItem of tableData;let i = index ">
-        <tr>
+        <ng-container  *ngFor="let dataItem of tableData ; let i=index " >
+        <tr>  
             <td *ngFor="let key of dataFields">{{dataItem[key]}}</td>
+            <ng-container *ngIf="tableEditFlag">
             <td>   
-                <button mat-icon-button (click)="edit(dataItem,'item'+i)"><mat-icon svgIcon="edit"></mat-icon></button>
-                <button mat-icon-button (click)="delete(dataItem,'item'+i)"><mat-icon svgIcon="delete"></mat-icon></button>
-            </td> 
+                <button mat-icon-button (click)="edit(dataItem,generateRow(i))"><mat-icon>edit</mat-icon></button>
+                <button mat-icon-button (click)="delete(dataItem,generateRow(i))"><mat-icon>clear</mat-icon></button>
+            </td>
+            </ng-container> 
          </tr> 
          
-        <tr [hidden]="true"  class="itemDetail"  id="item{{i}}">
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Product" [value]="dataItem[dataFields[0]]">
-                </mat-form-field>
+        <tr [hidden]="true"  class="itemDetail"  id="{{generateRow(i)}}">
+            
+            <td [attr.colspan]="colSpanWidth">
+              <itemDetail [dataFields]="dataFields"
+                          [data]="dataItem"
+                          [dataKey]="dataKey" 
+                          [rowId]="generateRow(i)"  
+                          (onViewChanges)="handleViewChanges($event)"  >
+                  
+              </itemDetail>  
+                 
+                 
             </td>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Price" [value]="dataItem[dataFields[1]]">
-                </mat-form-field>
-            </td>
-            <td>
-                <mat-form-field>
-                    <input matInput placeholder="Category" [value]="dataItem[dataFields[2]]">
-                </mat-form-field>
-            </td>
-            <td >
-                <button mat-icon-button><mat-icon svgIcon="update"></mat-icon></button>
-                <button mat-icon-button (click)="cancel('item'+i)" ><mat-icon svgIcon="cancel"></mat-icon></button>
-            </td>
+            
+                
+            
+                        
+          
         </tr>
                
          

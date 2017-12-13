@@ -1,44 +1,75 @@
-import { Component, OnInit,Input,ViewChild,AfterViewInit,QueryList} from '@angular/core';
-import {DomSanitizer} from   '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
+import { Component, OnInit,Input,Output,ViewChild,EventEmitter} from '@angular/core';
+import { ElementRef,Renderer2 } from '@angular/core';
 @Component({
   selector: 'itemTable',
   templateUrl: './item-table.component.html',
   styleUrls: ['./item-table.component.css']
 })
-export class ItemTableComponent implements OnInit,AfterViewInit {
+export class ItemTableComponent implements OnInit {
    
    @Input() tableHeaders;
    @Input() tableData;
    @Input() dataFields;
+   @Input() selectorId;
+   @Input() editFlag;
+   @Output() onTableChanges = new EventEmitter<object>();
    @ViewChild('itemtable') itemTable;
+   public dataKey:any;
+   public colSpanWidth:number;
+   public tableEditFlag:boolean;
+   public sortFlag:boolean = false;
   
-  constructor(iconRegistry:MatIconRegistry,sanitizer:DomSanitizer) {
-  	iconRegistry.addSvgIcon('edit',sanitizer.bypassSecurityTrustResourceUrl('./assets/edit.svg'));
-  	iconRegistry.addSvgIcon('delete',sanitizer.bypassSecurityTrustResourceUrl('./assets/delete.svg'));
-    iconRegistry.addSvgIcon('update',sanitizer.bypassSecurityTrustResourceUrl('./assets/update.svg'));
-    iconRegistry.addSvgIcon('cancel',sanitizer.bypassSecurityTrustResourceUrl('./assets/cancel.svg'));
+  constructor(private renderer:Renderer2) {
 
-   
    }
 
+
+
   ngOnInit() {
- 
+     this.colSpanWidth = this.dataFields.length + 1;
+     this.dataKey = this.selectorId; 
+     this.tableEditFlag = this.editFlag;
     }
-  ngAfterViewInit(){
-   
+
+  generateRow(index){
+     return 'item'+index;
     }
 
 
-  edit(data,rowId){
-    
-    this.itemTable.nativeElement.querySelector('#'+rowId).hidden=false;
-    }
-  delete(data,rowId){
-    //this.itemTable.nativeElement.querySelector('#'+rowId).hidden = true;
+   toggleDetailView(rowId,value){
+
+   this.itemTable.nativeElement.querySelector('#'+rowId).hidden=value;
   }
-  cancel(rowId){
-   this.itemTable.nativeElement.querySelector('#'+rowId).hidden = true; 
+  
+  edit(data,rowId){
+    this.toggleDetailView(rowId,false);
+   
+ }
+  
+  handleViewChanges(value){
+    switch (true) {
+      
+      case value.changeType === 'update':
+       this.onTableChanges.emit({changeType:'update', id:value.id, payload:value.payload})
+       this.toggleDetailView(value.rowId,true);
+       break;
+
+      case value.changeType === 'cancel':
+      this.toggleDetailView(value.rowId,true);
+      break;
+
+      
+      }
+  
+
+
+  }
+  
+  delete(data,rowId){
+    
+    let id = this.selectorId
+    this.onTableChanges.emit({changeType:'delete',payload:{id:data[this.selectorId]}});  
+    
   }
 
 }

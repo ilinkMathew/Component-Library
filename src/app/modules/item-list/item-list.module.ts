@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule } from '@angular/common/http';
+import {ReactiveFormsModule} from '@angular/forms';
 import { ItemListboxComponent } from './components/item-listbox/item-listbox.component';
 import { ItemListHeaderComponent } from './components/item-list-header/item-list-header.component';
 import { ItemAddComponent } from './components/item-add/item-add.component';
@@ -15,6 +16,7 @@ import { ItemTableAddOnsComponent } from './components/item-table-add-ons/item-t
 import { ItemTableComponent } from './components/item-table/item-table.component';
 import { ItemTablePaginatorComponent } from './components/item-table-paginator/item-table-paginator.component';
 import { ItemDetailComponent } from './components/item-detail/item-detail.component';
+import { TableHeaderComponent } from './components/table-header/table-header.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { ItemDetailComponent } from './components/item-detail/item-detail.compon
     MatSelectModule,
     MatIconModule,
     MatButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule
 
   ],
   declarations: [ItemListboxComponent,
@@ -34,7 +37,8 @@ import { ItemDetailComponent } from './components/item-detail/item-detail.compon
   				ItemTableAddOnsComponent,
   				ItemTableComponent,
   				ItemTablePaginatorComponent,
-  				ItemDetailComponent],
+  				ItemDetailComponent,
+  				TableHeaderComponent],
   exports:[ItemListboxComponent]
 })
 export class ItemListModule { }

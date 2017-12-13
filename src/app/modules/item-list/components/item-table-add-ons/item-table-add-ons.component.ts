@@ -1,6 +1,4 @@
 import { Component, OnInit,Output,EventEmitter } from '@angular/core';
-import {DomSanitizer} from   '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
 import {Observable,Subject} from 'rxjs';
 @Component({
   selector: 'itemTableAddons',
@@ -10,11 +8,11 @@ import {Observable,Subject} from 'rxjs';
 export class ItemTableAddOnsComponent implements OnInit {
   @Output() onSearchItem = new EventEmitter<string>()	
   public keyUp = new Subject<any>();
-  constructor(iconRegistry:MatIconRegistry,sanitizer:DomSanitizer) {
-  iconRegistry.addSvgIcon('search',sanitizer.bypassSecurityTrustResourceUrl('./assets/Search.svg'));
+  constructor() {
+  
   const subscription = this.keyUp
                        .map(event  => event.target.value)
-                       .debounceTime(1000)
+                        .debounceTime(500)
                        .distinctUntilChanged()
                        .flatMap(search => Observable.of(search).delay(200))
                        .subscribe(val=>{

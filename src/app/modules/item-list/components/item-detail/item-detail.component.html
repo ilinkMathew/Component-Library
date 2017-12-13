@@ -1,19 +1,14 @@
-<td>
-    <mat-form-field>
-        <input matInput placeholder="Product Name">
+<form [formGroup]="itemForm" novalidate>
+    <mat-form-field class="form-field">
+        <input matInput placeholder="Product" [formControlName]="dataFields[0]" >
     </mat-form-field>
-</td>
-<td>
-    <mat-form-field>
-        <input matInput placeholder="Product Name">
+    <mat-form-field class="form-field">
+        <input matInput placeholder="Price"  [formControlName]="dataFields[1]" >
     </mat-form-field>
-</td>
-<td>
-    <mat-form-field>
-        <input matInput placeholder="Product Name">
+    <mat-form-field class="form-field">
+        <input matInput placeholder="Category"  [formControlName]="dataFields[2]" >
     </mat-form-field>
-</td>
-<td >
-	<button mat-icon-button><mat-icon svgIcon="update"></mat-icon></button>
-	<button mat-icon-button><mat-icon svgIcon="update"></mat-icon></button>
-</td>
+    <button mat-icon-button (click)="update()"><mat-icon>check_circle</mat-icon></button>
+    <button mat-icon-button (click)="cancel()" ><mat-icon >cancel</mat-icon></button>
+                      
+</form>

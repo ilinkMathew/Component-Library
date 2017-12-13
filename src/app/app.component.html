@@ -1,6 +1,7 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="Container">
-  <itemListBox [itemListBoxConfg]="itemListBoxConfg">
+  <itemListBox [itemListBoxConfg]="itemListBoxConfg" 
+  				(onItemListChanges)="handleItemListChanges($event)" >
   	  
   </itemListBox>
 </div>

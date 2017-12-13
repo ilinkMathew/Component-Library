@@ -20,14 +20,16 @@
 	  height:20px;
       width:20px;
       margin-left:20px;
+      
+     
 }
+mat-icon {
+    color:#bf9c7b;
+}
+
 .ItemTable > table > tbody > .itemDetail {
   height:130px;
   box-shadow:0px 0px 1px 0px rgba(0, 0, 0, 0.65);
  
 }
-.itemDetail > td > mat-form-field {
-  width: 80%;
-  font-size: 16px;
-  padding:5%;
-}
+

@@ -1,5 +1,18 @@
 <div class="ItemTableContainer">
-	<itemTableAddons  (onSearchItem)="handleSearch($event)"></itemTableAddons>
-	<itemTable [tableHeaders]="tableHeaders" [tableData]="tableData" [dataFields]="dataFields"></itemTable>
-	<itemTablePaginator [hidden]="!itemListConfig.itemListFlags.enablePaginator" [tableSize]="tableSize" [paginatorConfig]="tablePaginatorConfig" (onLimitChanges)="changeLimiterValue($event)" (onItemPaginatorEvent)="changeTableData($event)" ></itemTablePaginator>
+	<ng-container *ngIf="itemListConfig.itemListFlags.enableSearch">
+		<itemTableAddons  (onSearchItem)="handleSearch($event)"></itemTableAddons>
+	</ng-container>
+	<itemTable [tableHeaders]="tableHeaders"
+	 		   [tableData]="tableData" 
+	 		   [dataFields]="dataFields"
+	 		   [selectorId]="dataSelectorId"
+	 		   [editFlag]="itemListConfig.itemListFlags.enableTableEdits"
+	 		   (onTableChanges)="handleTableChanges($event)"></itemTable>
+	
+	<itemTablePaginator [hidden]="!itemListConfig.itemListFlags.enablePaginator" 
+						[tableSize]="tableSize" 
+						[paginatorConfig]="tablePaginatorConfig" 
+						(onLimitChanges)="changeLimiterValue($event)" 
+						(onItemPaginatorEvent)="changePaginator($event)" ></itemTablePaginator>
+
 </div>

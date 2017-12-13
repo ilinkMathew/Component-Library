@@ -1,6 +1,4 @@
 import { Component, OnInit,Input,Output,EventEmitter } from '@angular/core';
-import {DomSanitizer} from   '@angular/platform-browser';
-import {MatIconRegistry} from '@angular/material';
 @Component({
   selector: 'itemTablePaginator',
   templateUrl: './item-table-paginator.component.html',
@@ -14,10 +12,8 @@ export class ItemTablePaginatorComponent implements OnInit {
   public startValue:number=1;
   public endValue:number;
   public selectedLimiterValue:number;
-  constructor(iconRegistry:MatIconRegistry,sanitizer:DomSanitizer) { 
-   iconRegistry.addSvgIcon('prev',sanitizer.bypassSecurityTrustResourceUrl('./assets/left.svg'));
-   iconRegistry.addSvgIcon('next',sanitizer.bypassSecurityTrustResourceUrl('./assets/right.svg'));
-  }
+  constructor() { 
+    }
 
   ngOnInit() {
  
